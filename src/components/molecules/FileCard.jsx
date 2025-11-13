@@ -7,7 +7,7 @@ import { formatFileSize } from "@/utils/fileUtils";
 import { cn } from "@/utils/cn";
 
 const FileCard = ({ 
-  file, 
+file, 
   onRemove,
   onRetry,
   showProgress = true,
@@ -48,24 +48,24 @@ const FileCard = ({
       transition={{ duration: 0.3 }}
       className={cn(
         "bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-all duration-200",
-        file.status === "error" && "border-red-200 bg-red-50/30",
+file.status === "error" && "border-red-200 bg-red-50/30",
         file.status === "completed" && "border-green-200 bg-green-50/30",
         className
       )}
     >
       <div className="flex items-center space-x-3">
         {/* File Preview */}
-        <FilePreview file={file} size="md" />
+<FilePreview file={file} size="md" />
 
         {/* File Info */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1">
-            <h4 className="text-sm font-medium text-gray-900 truncate">
+<h4 className="text-sm font-medium text-gray-900 truncate">
               {file.name}
             </h4>
             <div className="flex items-center space-x-2">
               <ApperIcon 
-                name={getStatusIcon(file.status)} 
+name={getStatusIcon(file.status)} 
                 className={cn("w-4 h-4", getStatusColor(file.status))}
               />
               {file.status !== "completed" && onRemove && (
@@ -81,7 +81,7 @@ const FileCard = ({
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+<div className="flex items-center justify-between text-xs text-gray-500 mb-2">
             <span>{formatFileSize(file.size)}</span>
             {file.uploadedAt && (
               <span>
@@ -91,7 +91,7 @@ const FileCard = ({
           </div>
 
           {/* Progress Bar */}
-          {showProgress && file.status !== "completed" && (
+{showProgress && file.status !== "completed" && (
             <ProgressBar
               value={file.progress}
               max={100}
@@ -103,7 +103,7 @@ const FileCard = ({
           )}
 
           {/* Error Message */}
-          {file.status === "error" && file.error && (
+{file.status === "error" && file.error && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
@@ -113,7 +113,7 @@ const FileCard = ({
                 <span>{file.error}</span>
                 {onRetry && (
                   <Button
-                    onClick={() => onRetry(file.id)}
+onClick={() => onRetry(file.id)}
                     variant="ghost"
                     size="xs"
                     className="text-red-600 hover:bg-red-100 ml-2"
@@ -127,13 +127,13 @@ const FileCard = ({
           )}
 
           {/* Upload Progress Text */}
-          {file.status === "uploading" && (
+{file.status === "uploading" && (
             <div className="text-xs text-blue-600 font-medium">
               Uploading... {Math.round(file.progress)}%
             </div>
           )}
 
-          {file.status === "completed" && (
+{file.status === "completed" && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

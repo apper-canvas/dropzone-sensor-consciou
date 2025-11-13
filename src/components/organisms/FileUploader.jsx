@@ -104,15 +104,9 @@ const handleUploadFile = useCallback(async () => {
     try {
       await uploadSingleFile(file);
       
-      toast.success("File uploaded successfully!", {
-        position: "top-right",
-        autoClose: 3000
-      });
+      toast.success("File uploaded successfully!");
     } catch (error) {
-      toast.error("Upload failed. Please try again.", {
-        position: "top-right",
-        autoClose: 3000
-      });
+      toast.error("Upload failed. Please try again.");
     } finally {
       setIsUploading(false);
     }

@@ -5,12 +5,12 @@ import ApperIcon from "@/components/ApperIcon";
 import { formatFileSize } from "@/utils/fileUtils";
 
 const UploadQueue = ({ 
-file = null,
+  file = null,
   onRemoveFile,
   onRetryFile,
   className = ""
 }) => {
-const totalSize = file ? file.size : 0;
+  const totalSize = file ? file.size : 0;
   const isCompleted = file && file.status === "completed";
   const isUploading = file && file.status === "uploading";
   const hasError = file && file.status === "error";
@@ -77,7 +77,7 @@ if (!file) {
       {/* File List */}
 <div className="space-y-3 max-h-96 overflow-y-auto">
         <AnimatePresence>
-          <motion.div
+<motion.div
             key={file.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ if (!file) {
             transition={{ duration: 0.3 }}
           >
             <FileCard
-              file={file}
+file={file}
               onRemove={onRemoveFile}
               onRetry={onRetryFile}
               showProgress={true}

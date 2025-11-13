@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { useAuth } from "@/layouts/Root";
 import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
 
 const Header = () => {
+  const { user, isAuthenticated } = useSelector(state => state.user);
+  const { logout } = useAuth();
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -42,6 +48,24 @@ const Header = () => {
                 No limits
               </div>
             </div>
+
+            {/* User Info and Logout */}
+            {isAuthenticated && (
+              <div className="flex items-center space-x-3">
+                <div className="hidden sm:block text-sm text-gray-700">
+                  Welcome, {user?.firstName || user?.name || 'User'}
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={logout}
+                  className="flex items-center space-x-2"
+                >
+                  <ApperIcon name="LogOut" className="w-4 h-4" />
+                  <span>Logout</span>
+                </Button>
+              </div>
+            )}
 
             <motion.button
               whileHover={{ scale: 1.05 }}
